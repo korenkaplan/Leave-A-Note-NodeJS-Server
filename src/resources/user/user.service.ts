@@ -31,19 +31,16 @@ class UserService {
     /**
     * Attempt to login a user
     */
-    public async login(email: string, password: string): Promise<string | Error> {
+    public async login(email: string, password: string): Promise<string | null> {
         try {
 
             //search for a user with this email in the database
             const user = await this.user.findOne({ email });
-            if (!user) { //if not found
-                throw new Error('User not found with email: ' + email);
-            }
-            //if found validate the password , else throw and error that the credentials are incorrect
-            if (await user.isValidPassword(password)) {
+            if (user !== null && await user.isValidPassword(password)) { //if not found
                 return token.createToken(user);
-            } else {
-                throw new Error('Wrong credentials were provided')
+            }
+             else {
+              return null;
             }
         } catch (error: any) {
             throw new Error('Unable to login: ' + error.message);
