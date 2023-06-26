@@ -20,7 +20,7 @@ class UserController implements IController {
         this.router.post(`${this.path}/passwordUpdate`, this.updateUserPassword);
         this.router.post(`${this.path}/informationUpdate`, this.updateUserInformation);
         this.router.post(`${this.path}/deleteMessage`, validationMiddleware(validate.deleteMessage), this.deleteMessageById);
-        this.router.get(`${this.path}/getUser`, authenticated, this.getUserQuery);
+        this.router.post(`${this.path}/getUser`, authenticated, this.getUserQuery);
     }
     private register = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
         try {
