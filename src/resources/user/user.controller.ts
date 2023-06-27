@@ -18,8 +18,8 @@ class UserController implements IController {
     private initializeRoutes(): void {
         this.router.post(`${this.path}/register`, validationMiddleware(validate.register), this.register);
         this.router.post(`${this.path}/login`, validationMiddleware(validate.login), this.login);
-        this.router.post(`${this.path}/passwordUpdate`,authenticated, this.updateUserPassword);
-        this.router.post(`${this.path}/informationUpdate`,authenticated, this.updateUserInformation);
+        this.router.post(`${this.path}/passwordUpdate`,authenticated,validationMiddleware(validate.passwordUpdate), this.updateUserPassword);
+        this.router.post(`${this.path}/informationUpdate`,authenticated,validationMiddleware(validate.infoUpdate), this.updateUserInformation);
         this.router.post(`${this.path}/deleteMessage`,authenticated, validationMiddleware(validate.deleteMessage), this.deleteMessageById);
         this.router.post(`${this.path}/getUser`, authenticated, this.getUserQuery);
     }

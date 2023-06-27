@@ -1,5 +1,6 @@
 import { error } from 'console';
 import {Request, Response, NextFunction, RequestHandler} from 'express';
+import IHttpResponse from '@/utils/interfaces/httpResponse.interface';
 import Joi,{ValidationError } from 'joi';
 
 function validationMiddleware(schema: Joi.Schema): RequestHandler {
@@ -15,11 +16,8 @@ function validationMiddleware(schema: Joi.Schema): RequestHandler {
             req.body = value;
             next();
         } catch (e: any) {
-            const errors: string[] = [];
-            e.details.forEach((error: Joi.ValidationErrorItem)=>{
-                errors.push(error.message);
-            });
-            res.status(400).send({errors});
+            const resBody: IHttpResponse<void> = {message:"Validation Error",success:false,error: e.message}
+            res.status(400).send(resBody);
         }
     };
 };
