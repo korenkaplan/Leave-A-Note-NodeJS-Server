@@ -14,6 +14,7 @@ async function authenticatedMiddleware(req: Request, res: Response, next: NextFu
       message: 'Token Error',
       success: false,
       error: 'Bearer token is missing or improperly formatted',
+      tokenError:true,
     };
     return res.status(401).json(resBody);
   }
@@ -28,6 +29,8 @@ async function authenticatedMiddleware(req: Request, res: Response, next: NextFu
         message: 'Token Error',
         success: false,
         error: 'Unauthorized token credentials',
+        tokenError:true,
+
       };
       return res.status(401).json(resBody);
     }
@@ -41,6 +44,8 @@ async function authenticatedMiddleware(req: Request, res: Response, next: NextFu
         message: 'Token Error',
         success: false,
         error: 'Unauthorized token credentials',
+      tokenError:true,
+
       };
       return res.status(401).json(resBody);
     }
@@ -54,6 +59,8 @@ async function authenticatedMiddleware(req: Request, res: Response, next: NextFu
       message: 'Token Error',
       success: false,
       error: e.message,
+      tokenError:true,
+
     };
     return res.status(401).json(resBody);
   }
