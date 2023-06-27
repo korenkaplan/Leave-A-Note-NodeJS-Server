@@ -5,6 +5,8 @@ import HttpException from '@/utils/exceptions/http.exception';
 import validationMiddleware from '@/middleware/validation.middleware';
 import validate from '@/resources/note/note.validation'
 import NoteService from '@/resources/note/note.service';
+import authenticated from '@/middleware/authenticated.middleware';
+
 import { log } from 'console';
 class NoteController implements IController {
     public path = '/notes';
@@ -15,7 +17,7 @@ class NoteController implements IController {
     }
 
     private initializeRoutes(): void {
-       this.router.post(`${this.path}/createNote`,validationMiddleware(validate.createNote),this.createNote);
+       this.router.post(`${this.path}/createNote`,authenticated,validationMiddleware(validate.createNote),this.createNote);
     }
     //** check 
     private createNote = async (req:Request, res: Response, next: NextFunction): Promise<Response | void> => {

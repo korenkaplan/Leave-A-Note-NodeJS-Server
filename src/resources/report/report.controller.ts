@@ -17,7 +17,7 @@ class ReportController implements IController {
 
     private initializeRoutes(): void {
         // Define your routes here
-        this.router.post(`${this.path}/createReport`,validationMiddleware(validate.reportValidationSchema),this.createReport)
+        this.router.post(`${this.path}/createReport`,authenticated,validationMiddleware(validate.reportValidationSchema),this.createReport)
     }
     //** Checked 
     private createReport = async  (req:Request, res: Response, next: NextFunction): Promise<Response | void> =>{
