@@ -12,45 +12,26 @@ class ReportService {
     private NoteService = new NoteService();
     private UserService = new UserService()
     private UnMatchedReportsService = new UnMatchedReportsService();
-    public async addReport(damagedCarNumber: string, hittingCarNumber: string, isAnonymous: boolean, reporter: { name: string; phoneNumber: string }, imageUrl: string): Promise<boolean | Error> {
-        try {
-            const hittingUser = await this.UserService.GetUserQuery({ carNumber: hittingCarNumber });
-            const damagedUser = await this.UserService.GetUserQuery({ carNumber: damagedCarNumber });
-
-            let result: Error | boolean = false;
-
+    public async addReport(damagedCarNumber: string, hittingCarNumber: string, isAnonymous: boolean, reporter: { name: string; phoneNumber: string }, imageUrl: string): Promise<string> {
+            const hittingUser: IUser | null = await this.UserService.GetUserQuery({ carNumber: hittingCarNumber });
+            const damagedUser: IUser | null = await this.UserService.GetUserQuery({ carNumber: damagedCarNumber });
             if (hittingUser && damagedUser) {
-                result = await this.handleBothDriversFound(hittingUser, damagedUser, isAnonymous, reporter, imageUrl);
+               await this.handleBothDriversFound(hittingUser, damagedUser, isAnonymous, reporter, imageUrl);
             } else if (!hittingUser && damagedUser) {
-                result = await this.handleHittingDriverNotFound(damagedUser, hittingCarNumber, isAnonymous, reporter, imageUrl);
+               await this.handleHittingDriverNotFound(damagedUser, hittingCarNumber, isAnonymous, reporter, imageUrl);
             } else if (hittingUser && !damagedUser) {
-                result = await this.handleDamagedDriverNotFound(hittingUser, damagedCarNumber, isAnonymous, reporter, imageUrl);
+               await this.handleDamagedDriverNotFound(hittingUser, damagedCarNumber, isAnonymous, reporter, imageUrl);
             } else {
-                result = await this.handleBothDriversNotFound(damagedCarNumber, hittingCarNumber, isAnonymous, reporter, imageUrl);
+               await this.handleBothDriversNotFound(damagedCarNumber, hittingCarNumber, isAnonymous, reporter, imageUrl);
             }
-            return result;
-        } catch (error: any) {
-            throw new HttpException(400, error.message);
-        }
+            return `Report has been added to ${damagedUser  === null? " unmatched reports collection": damagedUser.name}`;
     }
-    private async addToUnmatchedReportsCollection(accident: IAccident, damagedCarNumber: string): Promise<boolean | Error> {
+    private async addToUnmatchedReportsCollection(accident: IAccident, damagedCarNumber: string): Promise<void> {
         //save the accident and the car number every sign up compare the car number to the reports on the list.
-        try {
             await this.UnMatchedReportsService.addUnmatchedReport(accident, damagedCarNumber);
-            return true;
-        } catch (error: any) {
-            throw new HttpException(400, error.message);
-        }
     };
-    private async handleBothDriversFound(
-        hittingUser: IUser,
-        damagedUser: IUser,
-        isAnonymous: boolean,
-        reporter: { name: string; phoneNumber: string },
-        imageUrl: string
-    ): Promise<boolean | Error> {
+    private async handleBothDriversFound(hittingUser: IUser,damagedUser: IUser,isAnonymous: boolean,reporter: { name: string; phoneNumber: string },imageUrl: string    ): Promise<void> {
         const accidentData: IAccident = {
-            _id: new Types.ObjectId(),
             hittingDriver: {
                 name: hittingUser.name,
                 carNumber: hittingUser.carNumber,
@@ -66,16 +47,11 @@ class ReportService {
                 phoneNumber: reporter.phoneNumber,
             },
         };
-        return await this.UserService.addMessageToUser(accidentData, damagedUser);
+         await this.UserService.addMessageToUser(accidentData, damagedUser);
     }
     private async handleHittingDriverNotFound(
-        damagedUser: IUser,
-        hittingCarNumber: string,
-        isAnonymous: boolean,
-        reporter: { name: string; phoneNumber: string },
-        imageUrl: string
-    ): Promise<boolean | Error> {
-        const accidentData: IAccident = {
+        damagedUser: IUser,   hittingCarNumber: string, isAnonymous: boolean, reporter: { name: string; phoneNumber: string },imageUrl: string): Promise<void> {
+            const accidentData: IAccident = {
             hittingDriver: {
                 carNumber: hittingCarNumber,
             },
@@ -89,16 +65,11 @@ class ReportService {
                 phoneNumber: reporter.phoneNumber,
             },
         };
-        return await this.UserService.addMessageToUser(accidentData, damagedUser);
+         await this.UserService.addMessageToUser(accidentData, damagedUser);
     }
     private async handleDamagedDriverNotFound(
-        hittingUser: IUser,
-        damagedCarNumber: string,
-        isAnonymous: boolean,
-        reporter: { name: string; phoneNumber: string },
-        imageUrl: string
-    ): Promise<boolean | Error> {
-        const accidentData: IAccident = {
+        hittingUser: IUser,damagedCarNumber: string, isAnonymous: boolean, reporter: { name: string; phoneNumber: string }, imageUrl: string  ): Promise<void> {
+            const accidentData: IAccident = {
             hittingDriver: {
                 name: hittingUser.name,
                 carNumber: hittingUser.carNumber,
@@ -114,16 +85,10 @@ class ReportService {
                 phoneNumber: reporter.phoneNumber,
             },
         };
-
-        return await this.addToUnmatchedReportsCollection(accidentData, damagedCarNumber);
+         await this.addToUnmatchedReportsCollection(accidentData, damagedCarNumber);
     }
     private async handleBothDriversNotFound(
-        damagedCarNumber: string,
-        hittingCarNumber: string,
-        isAnonymous: boolean,
-        reporter: { name: string; phoneNumber: string },
-        imageUrl: string
-    ): Promise<boolean | Error> {
+        damagedCarNumber: string, hittingCarNumber: string,  isAnonymous: boolean, reporter: { name: string; phoneNumber: string }, imageUrl: string): Promise<void> {
         const accidentData: IAccident = {
             hittingDriver: {
                 carNumber: hittingCarNumber,
@@ -138,7 +103,7 @@ class ReportService {
                 phoneNumber: reporter.phoneNumber,
             },
         };
-        return await this.addToUnmatchedReportsCollection(accidentData, damagedCarNumber);
+        await this.addToUnmatchedReportsCollection(accidentData, damagedCarNumber);
     }
 }
 

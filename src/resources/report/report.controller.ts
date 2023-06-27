@@ -5,6 +5,7 @@ import validationMiddleware from '@/middleware/validation.middleware';
 import validate from '@/resources/report/report.validation'
 import ReportService from '@/resources/report/report.service';
 import authenticated from '@/middleware/authenticated.middleware';
+import IHttpResponse from '@/utils/interfaces/httpResponse.interface';
 
 class ReportController implements IController {
     public path = '/reports';
@@ -18,13 +19,16 @@ class ReportController implements IController {
         // Define your routes here
         this.router.post(`${this.path}/createReport`,validationMiddleware(validate.reportValidationSchema),this.createReport)
     }
+    //** Checked 
     private createReport = async  (req:Request, res: Response, next: NextFunction): Promise<Response | void> =>{
        try {
         const {imageUrl,damagedCarNumber,hittingCarNumber, isAnonymous,reporter} = req.body;
-        const isSaved = await this.ReportService.addReport(damagedCarNumber, hittingCarNumber, isAnonymous,reporter,imageUrl);
-        isSaved? res.status(201).json({data: isSaved}):  res.status(200).json({data: 'save unsuccessful'});
+        const message = await this.ReportService.addReport(damagedCarNumber, hittingCarNumber, isAnonymous,reporter,imageUrl);
+        const resBody: IHttpResponse<void> = {message,success:true}
+       res.status(201).json(resBody);
        } catch (error: any) {
-        throw new HttpException(400, error.message);
+        const resBody: IHttpResponse<void> = {message:'Error saving report',success:false, error:error.message}
+        res.status(500).json(resBody);
     }
     };
 }
