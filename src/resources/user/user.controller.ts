@@ -96,7 +96,8 @@ class UserController implements IController {
             const resBody: IHttpResponse<void> = {message,success,error}
             return res.status(status).json(resBody);
         } catch (e: any) {
-            const resBody: IHttpResponse<void> = {success:false,message:'Failed to update user info',error:e.message}
+           const fieldInUse = this.UserService.translateError(e.message);
+            const resBody: IHttpResponse<void> = {success:false,message:'Failed to update user info',error:`This ${fieldInUse} is already in use`}
             res.status(500).json(resBody)
         }
     };

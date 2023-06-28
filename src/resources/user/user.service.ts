@@ -125,35 +125,16 @@ class UserService {
      * Update the user's information in the database
      */
     public async updateUserInfo(userId: string, update: UpdateQuery<IUser>): Promise<[boolean, string]> {
-        const user = await this.user.findOne({
-          $or: [
-            { "carNumber": update.carNumber },
-            { "email": update.email },
-            { "phoneNumber": update.phoneNumber },
-          ],
-        });
-        
-        if (user && user._id != userId) {
-            console.log('here');
-          // Check which field(s) have a duplicate value
-          if (user.carNumber === update.carNumber) {
-            return [false, 'This Car number is already in use.'];
-          }
-          if (user.email === update.email) {
-            return [false, 'This email is already in use.'];
-          }
-          if (user.phoneNumber === update.phoneNumber) {
-            return [false, 'This phone number is already in use.'];
-          }
-        }
+            const updatedUser = await this.user.findOneAndUpdate<IUser | null>({ '_id': userId }, update, { new: true });
+        return updatedUser? [true, 'User information updated successfully.']: [false, 'User with this id not found in the system.']
       
-        const updatedUser = await this.user.findOneAndUpdate<IUser | null>({ '_id': userId }, update, { new: true });
-        if (updatedUser) {
-          return [true, 'User information updated successfully.'];
-        }
-      
-        return [false, 'User with this id not found in the system.'];
       }
-      
+    public translateError(error:string): string{
+        let fieldInUse = '';
+        if(error.includes('carNumber')){fieldInUse = 'car number';}
+        else if(error.includes('phoneNumber')){fieldInUse = 'phone number';}
+        else if(error.includes('email')){fieldInUse = 'email'}
+        return fieldInUse;
+    }
 };
 export default UserService;
