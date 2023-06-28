@@ -124,10 +124,35 @@ class UserService {
     /**
      * Update the user's information in the database
      */
-    public async updateUserInfo(userId: string, update:UpdateQuery<IUser>): Promise<[boolean,IUser | null]> {
-        const updatedUser = await this.user.findOneAndUpdate<IUser | null>({'_id': userId}, update,{new: true});
-        return [updatedUser !== null, updatedUser];
-        
-    }
+    public async updateUserInfo(userId: string, update: UpdateQuery<IUser>): Promise<[boolean, string]> {
+        const user = await this.user.findOne({
+          $or: [
+            { "carNumber": update.carNumber },
+            { "email": update.email },
+            { "phoneNumber": update.phoneNumber },
+          ],
+        });
+      
+        if (user) {
+          // Check which field(s) have a duplicate value
+          if (user.carNumber === update.carNumber) {
+            return [false, 'This Car number is already in use.'];
+          }
+          if (user.email === update.email) {
+            return [false, 'This email is already in use.'];
+          }
+          if (user.phoneNumber === update.phoneNumber) {
+            return [false, 'This phone number is already in use.'];
+          }
+        }
+      
+        const updatedUser = await this.user.findOneAndUpdate<IUser | null>({ '_id': userId }, update, { new: true });
+        if (updatedUser) {
+          return [true, 'User information updated successfully.'];
+        }
+      
+        return [false, 'User with this id not found in the system.'];
+      }
+      
 };
 export default UserService;

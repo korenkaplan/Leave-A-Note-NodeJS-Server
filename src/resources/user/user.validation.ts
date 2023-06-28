@@ -26,11 +26,11 @@ const passwordUpdate = Joi.object({
 const infoUpdate = Joi.object({
   userId: Joi.string().required(),
   update: Joi.object({
-    fullname: Joi.string(),
+    name: Joi.string(),
     email: Joi.string().email(),
     phoneNumber: Joi.string(),
-    carNum: Joi.string(),
-  }),
+    carNumber: Joi.string(),
+  }).required(),
 });
 
 

@@ -91,12 +91,12 @@ class UserController implements IController {
     private updateUserInformation = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
         try {
             const {userId, update} = req.body;
-            const [isSuccessful,user] = await this.UserService.updateUserInfo(userId,update);
-            const [success, message,status, data, error] = isSuccessful? [true,'Information Updated Successfully',200,user]:[false,'Information update failed',404,,'User not found'];
-            const resBody: IHttpResponse<IUser | null> = {success, message, data, error}
+            const [isSuccessful,resultMessage] = await this.UserService.updateUserInfo(userId,update);
+            const [success,message,status,error] = isSuccessful? [true,resultMessage,200]:[false,'Failed to update user\'s info',400,resultMessage];
+            const resBody: IHttpResponse<void> = {message,success,error}
             return res.status(status).json(resBody);
-        } catch (error: any) {
-            const resBody: IHttpResponse<void> = {message:'Error updating user information',error:error.message,success:false}
+        } catch (e: any) {
+            const resBody: IHttpResponse<void> = {success:false,message:'Failed to update user info',error:e.message}
             res.status(500).json(resBody)
         }
     };
