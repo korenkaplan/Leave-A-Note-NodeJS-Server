@@ -79,8 +79,11 @@ class UserController implements IController {
     private updateUserPassword = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
         try {
           const {userId, oldPassword, newPassword} = req.body; 
-          const [success,message,status]= await this.UserService.updateUserPassword(userId, oldPassword, newPassword);
-          const resBody: IHttpResponse<void> = {success,message}
+          const [success,resultMessage,status]= await this.UserService.updateUserPassword(userId, oldPassword, newPassword);
+         const [message, error] = success ? [resultMessage]:['Failed To Update Password',resultMessage] 
+          const resBody: IHttpResponse<void> = {success,message,error}
+          console.log(error);
+          
           return res.status(status).json(resBody);
         } catch (error: any) {
           const resBody: IHttpResponse<void> = {message:'Error updating user password',error:error.message,success:false}
