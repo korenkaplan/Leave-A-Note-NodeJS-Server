@@ -132,8 +132,9 @@ class UserService {
             { "phoneNumber": update.phoneNumber },
           ],
         });
-      
-        if (user) {
+        
+        if (user && user._id != userId) {
+            console.log('here');
           // Check which field(s) have a duplicate value
           if (user.carNumber === update.carNumber) {
             return [false, 'This Car number is already in use.'];
