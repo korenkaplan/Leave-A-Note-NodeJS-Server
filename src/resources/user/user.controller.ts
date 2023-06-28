@@ -21,6 +21,7 @@ class UserController implements IController {
         this.router.post(`${this.path}/passwordUpdate`,authenticated,validationMiddleware(validate.passwordUpdate), this.updateUserPassword);
         this.router.post(`${this.path}/informationUpdate`,authenticated,validationMiddleware(validate.infoUpdate), this.updateUserInformation);
         this.router.post(`${this.path}/deleteMessage`,authenticated, validationMiddleware(validate.deleteMessage), this.deleteMessageById);
+        this.router.post(`${this.path}/deleteMessageInbox`,authenticated, validationMiddleware(validate.deleteMessage), this.deleteMessageInbox);
         this.router.post(`${this.path}/getUser`, authenticated, this.getUserQuery);
     }
     // ** Checked
@@ -66,15 +67,28 @@ class UserController implements IController {
     private deleteMessageById = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
         try {
             const { userId, messageId } = req.body;
-            const [isSuccessful,message] = await this.UserService.deleteMessage(userId, messageId);
-            const status = isSuccessful? 200: 404;
-            const resBody: IHttpResponse<void> = {message,success:isSuccessful}
+            const [isSuccessful,resultMessage] = await this.UserService.deleteMessage(userId, messageId);
+            const [message,status, error] = isSuccessful? [resultMessage,200]: ['Failed to delete message',404,resultMessage];
+            const resBody: IHttpResponse<void> = {success: isSuccessful,message, error}
              res.status(status).json(resBody);
         } catch (error: any) {
-            const resBody: IHttpResponse<void> = {message:'Error deleting message',error: error.message,success:false}
+            const resBody: IHttpResponse<void> = {message:'Failed to delete message',error: error.message,success:false}
             res.status(500).json(resBody);
         }
     };
+         // ** Checked
+         private deleteMessageInbox = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
+            try {
+                const { userId, messageId } = req.body;
+                const [isSuccessful,resultMessage] = await this.UserService.deleteMessageInbox(userId, messageId);
+                const [message,status, error] = isSuccessful? [resultMessage,200]: ['Failed to delete message',404,resultMessage];
+                const resBody: IHttpResponse<void> = {success: isSuccessful,message, error}
+                 res.status(status).json(resBody);
+            } catch (error: any) {
+                const resBody: IHttpResponse<void> = {message:'Failed to delete message',error: error.message,success:false}
+                res.status(500).json(resBody);
+            }
+        };
      // ** Checked
     private updateUserPassword = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
         try {

@@ -103,6 +103,28 @@ class UserService {
             return [true, 'Accident deleted successfully'];
     }
     /**
+     * delete a message from the user unread messages array
+     */
+    public async deleteMessageInbox(userId: string, messageId: string): Promise<[boolean, string]>{
+        const user = await this.user.findById(userId);
+        if (!user) 
+            return [false, 'User not found'];
+
+            const index = user.unreadMessages.findIndex(message => message._id?.equals(new Types.ObjectId(messageId)));
+
+        if (index < 0)
+            return [false,'Message not found'];
+        
+        user.unreadMessages.splice(index, 1);
+        await user.save();
+
+        return [true, 'Message deleted successfully'];
+
+
+
+        
+    }
+    /**
      * Update the user's password in the database
      */
     public async updateUserPassword(userId: string, oldPassword: string,newPassword: string): Promise<[boolean,string,number]> {
