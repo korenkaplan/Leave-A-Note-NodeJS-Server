@@ -19,7 +19,7 @@ function createFile(folderPath, fileName, fileContent) {
 }
 
 const folderPath =
-    'C:\\Users\\Koren Kaplan\\Desktop\\Projects\\React native\\Leave-A-Note\\NodeServer\\src\\resources';
+    'C:\\Users\\Koren Kaplan\\Desktop\\Projects\\Leave a note node server\\src\\resources';
 
 const args = process.argv.slice(2);
 
