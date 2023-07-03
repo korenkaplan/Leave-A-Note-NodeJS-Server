@@ -1,7 +1,7 @@
 import { Schema, model, Document } from 'mongoose';
 import {IAccident} from '@/resources/accident/accident.interface';
 
-const AccidentSchema = new Schema<IAccident>(
+ export const AccidentSchema = new Schema<IAccident>(
   {
     hittingDriver: {
       name: { type: String },
@@ -16,10 +16,10 @@ const AccidentSchema = new Schema<IAccident>(
       name: { type: String },
       phoneNumber: { type: String },
     },
-   // date: { type: Date, required: true },
+    date: { type: String},
     isDeleted: { type: Boolean , required: true },
   },
-  { collection: 'accidents',timestamps:{createdAt:true,updatedAt:false} }, // Merge options into a single object
+  { timestamps:{createdAt:true,updatedAt:false} }, // Merge options into a single object
 );
 
 export default model<IAccident>('Accident', AccidentSchema);

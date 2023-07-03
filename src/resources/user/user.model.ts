@@ -1,28 +1,7 @@
 import { Schema, model } from 'mongoose';
 import bcrypt from 'bcrypt';
 import User from '@/resources/user/user.interface';
-import accidentModel from '../accident/accident.model';
-import { IAccident } from '../accident/accident.interface';
-const AccidentSchema = new Schema<IAccident>(
-  {
-    hittingDriver: {
-      name: { type: String },
-      carNumber: { type: String, required: true },
-      phoneNumber: { type: String },
-    },
-    imageSource: { type: String, required: true },
-    type: { type: String, enum: ['report', 'note'], required: true },
-    isAnonymous: { type: Boolean },
-    isIdentify: { type: Boolean },
-    reporter: {
-      name: { type: String },
-      phoneNumber: { type: String },
-    },
-    //date: { type: Date, required: true },
-    isDeleted: { type: Boolean , default: false },
-  },
-  { timestamps:{createdAt:true,updatedAt:false} }, // Merge options into a single object
-);
+import { AccidentSchema } from '../accident/accident.model';
 const UserSchema = new Schema<User>(
   {
     name: {

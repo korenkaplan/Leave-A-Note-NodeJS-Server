@@ -38,6 +38,8 @@ class UserService {
     public async addMessageToUser(accident: IAccident, damagedUser: IUser): Promise<void> {
             accident._id = new Types.ObjectId();
             //add to user messages
+            console.log(accident.date);
+            
             damagedUser.accidents.push(accident);
             damagedUser.unreadMessages.push(accident);
             await damagedUser.save();

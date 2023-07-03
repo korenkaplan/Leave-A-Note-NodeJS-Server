@@ -6,7 +6,7 @@ export interface IAccidentDoc extends Document {
         carNumber: string;
         phoneNumber?: string;
       };
-      date: Date;
+      date: string;
       imageSource: string;
       type: 'report' | 'note';
       isAnonymous?: boolean;
@@ -34,5 +34,6 @@ export interface IAccident  {
       phoneNumber: string;
     };
     isDeleted: boolean;
+    date:string;
 
 };

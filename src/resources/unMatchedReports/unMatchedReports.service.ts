@@ -2,9 +2,10 @@ import UnMatchedReportsModel from '@/resources/unMatchedReports/unMatchedReports
 import IUnMatchedReports from './unMatchedReports.interface';
 import HttpException from '@/utils/exceptions/http.exception';
 import { IAccident } from '@/resources/accident/accident.interface';
+import NoteService from '../note/note.service';
 class UnMatchedReportsService {
-    private unMatchedReports = UnMatchedReportsModel;
-
+     unMatchedReports = UnMatchedReportsModel;
+    noteService = new NoteService();
     public async addUnmatchedReport(accident: IAccident, damagedCarNumber: string): Promise<void> {
         await this.unMatchedReports.create({accident,damagedCarNumber});
     };
