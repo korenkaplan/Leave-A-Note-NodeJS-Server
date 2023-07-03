@@ -7,7 +7,7 @@ class UnMatchedReportsService {
      unMatchedReports = UnMatchedReportsModel;
     noteService = new NoteService();
     public async addUnmatchedReport(accident: IAccident, damagedCarNumber: string): Promise<void> {
-        await this.unMatchedReports.create({accident,damagedCarNumber});
+       await this.unMatchedReports.create({accident,damagedCarNumber});
     };
 }
 

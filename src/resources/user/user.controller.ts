@@ -35,7 +35,7 @@ class UserController implements IController {
 
         } catch (error: any) {
             const fieldInUse = this.UserService.translateError(error.message)
-            const resBody: IHttpResponse<string> = { message: 'Failed to update user info', success: false, error:`This ${fieldInUse} is already in use.` }
+            const resBody: IHttpResponse<string> = { message: 'Registration Failed', success: false, error:`This ${fieldInUse} is already in use.` }
             res.status(500).json(resBody)
         }
     };

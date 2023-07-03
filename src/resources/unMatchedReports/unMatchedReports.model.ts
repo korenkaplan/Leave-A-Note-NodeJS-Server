@@ -3,10 +3,14 @@ import IUnMatchedReports from '@/resources/unMatchedReports/unMatchedReports.int
 import { AccidentSchema } from '../accident/accident.model';
 const UnMatchedReportsSchema = new Schema<IUnMatchedReports>(
   {
-    accident: {type: AccidentSchema, required: true},
-    damagedCarNumber:{type: String, required: true},
+    accident: {type: AccidentSchema},
+    damagedCarNumber:{type: String},
+    accidentReference:{ type: Schema.Types.ObjectId,
+       ref: 'Accident', // Referencing the 'Accident' model
+    },
   },
-  { collection: 'unMatchedReports' } 
+  { collection: 'unMatchedReports', timestamps:true} 
+  
 );
 
 export default model<IUnMatchedReports>('UnMatchedReports', UnMatchedReportsSchema);

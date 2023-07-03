@@ -21,9 +21,19 @@ class UserService {
             const unMatchedReports = await this.SearchUnmatchedReports(carNumber);
             if (unMatchedReports) {
                 await this.AddUnmatchedReportsToUser(user, unMatchedReports)
+                await this.deleteAccidentFromUnMatchedReports(unMatchedReports)
             }
             return token.createToken(user);
     };
+    async deleteAccidentFromUnMatchedReports(matchedReports: IUnMatchedReports[]): Promise<void>{
+        matchedReports.forEach (async(matchedReport)=> {
+            matchedReport.accidentReference = matchedReport.accident?._id
+            matchedReport.accidentReference = matchedReport.accident?._id;
+            matchedReport.accident = undefined;
+            matchedReport.damagedCarNumber = undefined;
+            await matchedReport.save();
+        })
+    }
     /**
     * Attempt to login a user
     */
@@ -63,7 +73,9 @@ class UserService {
     private async SearchUnmatchedReports(carNumber: string): Promise<IUnMatchedReports[] | null> {
         try {
             const matchedReports = await this.unMatchedReportsModel.find({ "damagedCarNumber": carNumber })
-            await this.unMatchedReportsModel.deleteMany({ "damagedCarNumber": carNumber })
+    
+            //await this.unMatchedReportsModel.deleteMany({ "damagedCarNumber": carNumber })
+            
             return matchedReports;
         } catch (error: any) {
             throw new Error('SearchUnmatchedReports: ' + error.message);
@@ -75,11 +87,13 @@ class UserService {
     private async AddUnmatchedReportsToUser(user: IUser, reports: IUnMatchedReports[]): Promise<void> {
         try {
             reports.forEach(async (report: IUnMatchedReports) => {
-                const accident: IAccident = report.accident;
-                accident._id = new Types.ObjectId();
-                user.accidents.push(accident);
-                user.unreadMessages.push(accident);
-                console.log(accident)
+                const accident: IAccident | undefined = report.accident;
+                if(accident !== undefined)
+                {
+                    accident._id = new Types.ObjectId();
+                    user.accidents.push(accident);
+                    user.unreadMessages.push(accident);
+                }
 
             });
             await user.save();
@@ -162,5 +176,6 @@ class UserService {
         else if(error.includes('email')){fieldInUse = 'email'}
         return fieldInUse;
     }
+
 };
 export default UserService;
