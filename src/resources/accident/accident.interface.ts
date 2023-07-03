@@ -1,4 +1,4 @@
-import { Document,Types } from 'mongoose';
+import { Date, Document,Types } from 'mongoose';
 
 export interface IAccidentDoc extends Document {
     hittingDriver: {
@@ -6,7 +6,7 @@ export interface IAccidentDoc extends Document {
         carNumber: string;
         phoneNumber?: string;
       };
-      date: string;
+      date: Date;
       imageSource: string;
       type: 'report' | 'note';
       isAnonymous?: boolean;
@@ -15,6 +15,7 @@ export interface IAccidentDoc extends Document {
         name: string;
         phoneNumber: string;
       };
+      isDeleted: boolean;
 };
 export interface IAccident  {
    _id?:Types.ObjectId
@@ -23,7 +24,7 @@ export interface IAccident  {
       carNumber: string;
       phoneNumber?: string;
     };
-    date: string;
+   // date: Date;
     imageSource: string;
     type: 'report' | 'note';
     isAnonymous?: boolean;
@@ -32,4 +33,6 @@ export interface IAccident  {
       name: string;
       phoneNumber: string;
     };
+    isDeleted: boolean;
+
 };

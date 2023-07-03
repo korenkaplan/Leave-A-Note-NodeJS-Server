@@ -17,7 +17,7 @@ class UserService {
      */
     public async register(name: string, email: string, carNumber: string, phoneNumber: string, password: string, role: string): Promise<string> {
 
-            const user: IUser = await this.user.create({ name, email, password, phoneNumber, carNumber, role, accidents: [], unreadMessages: [] });
+            const user: IUser = await this.user.create({ name, email, password, phoneNumber, carNumber, role, accidents: [], unreadMessages: []});
             const unMatchedReports = await this.SearchUnmatchedReports(carNumber);
             if (unMatchedReports) {
                 await this.AddUnmatchedReportsToUser(user, unMatchedReports)
@@ -48,6 +48,8 @@ class UserService {
     public async GetUserQuery(query: FilterQuery<IUser> = {}, projection: ProjectionFields<IUser> = {}): Promise<IUser | null> {
         try {
             const user: IUser | null = await this.user.findOne(query, projection);
+            if(user)
+           user.accidents = user?.accidents.filter(accident => !accident.isDeleted)
             return user;
         } catch (error: any) {
             throw new Error('getUserByCarNumber service: ' + error.message);
@@ -97,7 +99,7 @@ class UserService {
                 return [false,'Accident not found'];
 
 
-            user.accidents.splice(index, 1);
+            user.accidents[index].isDeleted = true;
             await user.save();
 
             return [true, 'Accident deleted successfully'];

@@ -6,7 +6,7 @@ const accidentSchema = Joi.object<IAccident>({
     carNumber: Joi.string().required(),
     phoneNumber: Joi.string().optional(),
   }),
-  date: Joi.string().required(),
+  //date: Joi.string().required(),
   imageSource: Joi.string().required(),
   type: Joi.string().valid('report', 'note').required(),
   isAnonymous: Joi.boolean().optional(),

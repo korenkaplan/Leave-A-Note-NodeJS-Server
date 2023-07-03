@@ -1,24 +1,54 @@
-import { log } from "console";
 import userModel from "./user.model";
-
+import IUser from "./user.interface";
+import UserService from "./user.service";
 interface Accident {
-
+  _id: string;
+  hittingDriver: {
+    name?: string;
+    carNumber: string;
+    phoneNumber?: string;
+  };
+  date: string;
+  imageSource: string;
+  type: 'report' | 'note';
+  isAnonymous?: boolean;
+  isIdentify?: boolean;
+  reporter?: {
+    name: string;
+    phoneNumber: string;
+  };
 }
-class UserChangeStream{
-    constructor(){
-        console.log('start listening for user changes');
 
-        const userChangeStream = userModel.watch();
+class UserChangeStream {
+   userService = new UserService();
+  constructor() {
+    this.initWatch();
+  }
+  private initWatch(): void{
+    userModel.watch().on("change",async (data)=> {
+        //check if not update finish
+        if (data.operationType !== 'update') { return;}
+        const updatedFields = data.updateDescription.updatedFields;
+        const fieldKeys = Object.keys(updatedFields);
+        //check if not a new message then finish
+        if(!this.isNewMessage(fieldKeys)){return;}
 
-        userChangeStream.on('change',(change)=>{
-                console.log(change);
-                console.log(change.documentKey._id.toString());
-                console.log(change.updateDescription.updatedFields);
-                
-                
-            })
+        //get the user
+        const uid = data.documentKey._id.toString();
+        const modifiedUser: IUser | null = await this.userService.GetUserQuery({ '_id': uid });
+        if (!modifiedUser) return;
         
-    }
-    
+        })
+  }
+  private isNewMessage(fieldKeys: string[]): boolean{
+    const hasAccidents = fieldKeys.some(key => key.includes('accidents'));
+    const hasUnreadMessages = fieldKeys.some(key => key.includes('unreadMessages'));
+    return hasAccidents && hasUnreadMessages;
+  }
+  private SendNotification (deviceToken:string,accident: Accident): void {
+   
+  }
+
 }
+
 export default UserChangeStream;

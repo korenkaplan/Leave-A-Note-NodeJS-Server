@@ -10,6 +10,6 @@ export default interface IUser extends Document {
   role: string;
   accidents: IAccident[]; // an array of Accident objects
   unreadMessages: IAccident[]; // an array of Accident objects in inbox
-
+  createdAt: Date;
   isValidPassword(password: string): Promise<Error | boolean>;
 }

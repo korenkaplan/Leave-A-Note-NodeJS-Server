@@ -35,12 +35,13 @@ class NoteService {
                 carNumber: hitting_user_car,
                 phoneNumber: hitting_user_phone,
             },
-            date:this.formatDate(),
+           // date:currentDate,
             imageSource: imageSource,
             type: 'note',
             isAnonymous: false,
             isIdentify: true,
             reporter: undefined,
+            isDeleted: false,
         }
 }    
 }
