@@ -1,5 +1,10 @@
-import { Document } from 'mongoose';
+    //The data structure for the registered users graph.
+    export interface RegisteredUsersPerMonthAmount {
+        month: 'Jan'|'Feb'|'Mer'|'Apr'|'May'|'Jun'|'Jul'|'Aug'|'Sep'|'Oct'|'Nov'|'Dec',
+        users: Number,
+        label?: string,
+        }
 
-export default interface IStats extends Document {
-
-};
+    export interface CounterMonthsDictionary {
+        [key: string]: number;
+      }
