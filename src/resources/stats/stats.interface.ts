@@ -1,6 +1,6 @@
     //The data structure for the registered users graph.
     export interface RegisteredUsersPerMonthAmount {
-        month: 'Jan'|'Feb'|'Mer'|'Apr'|'May'|'Jun'|'Jul'|'Aug'|'Sep'|'Oct'|'Nov'|'Dec',
+        month: string,
         users: Number,
         label?: string,
         }
