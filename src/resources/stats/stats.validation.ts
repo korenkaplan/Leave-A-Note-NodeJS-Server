@@ -5,5 +5,7 @@ const registeredUsersPerMonth  = Joi.object({
   role: Joi.string().valid('admin').required(),
   year: Joi.string().required(),
 })
-
-export default {registeredUsersPerMonth}
+const getReportsDistribution  = Joi.object({
+  role: Joi.string().valid('admin').required(),
+})
+export default {registeredUsersPerMonth,getReportsDistribution}

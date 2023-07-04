@@ -18,6 +18,7 @@ class StatsController implements IController {
     private initializeRoutes(): void {
         // Define your routes here
         this.router.post(`${this.path}/registeredUsersData`,authenticated,validationMiddleware(validate.registeredUsersPerMonth),this.getRegisteredUsersData)
+        this.router.post(`${this.path}/reportsDistribution`,authenticated,validationMiddleware(validate.getReportsDistribution),this.getReportsDistribution)
     }
 
     public getRegisteredUsersData = async(req: Request, res: Response,):Promise<Response | void> =>{
@@ -30,6 +31,10 @@ class StatsController implements IController {
             const resBody: IHttpResponse<void> = {success:false,message:'Failed to Get User Per month Data',error:error.message};
             return res.status(500).json(resBody);
         }
+    };
+    public getReportsDistribution = async(req: Request, res: Response,):Promise<Response | void> =>{
+        const result = await this.statsService.reportsAndNotesDistribution();
+        res.status(200).json(result);
     };
 }
 

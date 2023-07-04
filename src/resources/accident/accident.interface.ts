@@ -35,5 +35,4 @@ export interface IAccident  {
     };
     isDeleted: boolean;
     date:string;
-
 };
