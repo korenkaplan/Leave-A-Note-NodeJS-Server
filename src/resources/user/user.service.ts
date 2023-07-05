@@ -60,11 +60,14 @@ class UserService {
     public async GetUserQuery(query: FilterQuery<IUser> = {}, projection: ProjectionFields<IUser> = {}): Promise<IUser | null> {
         try {
             const user: IUser | null = await this.user.findOne(query, projection);
-            if(user)
-           user.accidents = user?.accidents.filter(accident => !accident.isDeleted)
+            console.log(user);
+            
+            if(user?.accidents)
+            user.accidents = user?.accidents.filter(accident => !accident.isDeleted)
+           
             return user;
         } catch (error: any) {
-            throw new Error('getUserByCarNumber service: ' + error.message);
+            throw new Error('GetUserQuery service: ' + error.message);
         }
     }
     /**
