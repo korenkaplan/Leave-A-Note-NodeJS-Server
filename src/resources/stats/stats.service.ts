@@ -62,6 +62,7 @@ class StatsService {
       {$count:"amount"}
 
     ]);
+    
     const unMatchedReportsAmount = await unMatchedReportsModel.find({"accidentReference": { $exists: false}})
     //const notes: DistributionOfReports = { 'category': 'Notes', count: notesAmount.length > 0 ? notesAmount[0].count : 0 }
     const notes: DistributionOfReports = { 'category': 'Notes', count:notesAmount[0].amount}
@@ -72,6 +73,7 @@ class StatsService {
   };
 
   // #endregion
+  
   //sort the users collection by any query
   public sortUsersCollection = async (query: FilterQuery<IUser>, year: number): Promise<IUser[]> => {
     const startOfYear = new Date(`${year}-01-01`);
@@ -89,15 +91,8 @@ class StatsService {
 
   }
 
-
-
-
-
-
-
   // show the relationship between amount of user to the distribution of reports and notes
 
-  //returns the ratio between anonymous reports vs  not anonymous reports
 }
 
 export default StatsService;

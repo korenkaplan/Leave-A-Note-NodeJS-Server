@@ -6,7 +6,7 @@ import StatsService from './stats.service';
 import authenticated from '@/middleware/authenticated.middleware'
 import validate from '@/resources/stats/stats.validation'
 import IHttpResponse from '@/utils/interfaces/httpResponse.interface';
-import {RegisteredUsersPerMonthAmount } from './stats.interface';
+import {DistributionOfReports, RegisteredUsersPerMonthAmount } from './stats.interface';
 class StatsController implements IController {
     public path = '/stats';
     public router = Router();
@@ -23,7 +23,7 @@ class StatsController implements IController {
 
     public getRegisteredUsersData = async(req: Request, res: Response,):Promise<Response | void> =>{
         try {
-            const {role,year} = req.body;
+            const {year} = req.body;
             const [isSuccessful,result] =  await this.statsService.RegisteredUsersPerMonth(year)
             const resBody: IHttpResponse<RegisteredUsersPerMonthAmount[]> ={success:isSuccessful,message:'Graph data',data:result}
             return res.status(200).json(resBody);
@@ -34,7 +34,8 @@ class StatsController implements IController {
     };
     public getReportsDistribution = async(req: Request, res: Response,):Promise<Response | void> =>{
         const result = await this.statsService.reportsAndNotesDistribution();
-        res.status(200).json(result);
+        const resBody: IHttpResponse<DistributionOfReports[]> = {success:true,message:'Graph data',data:result}
+        res.status(200).json(resBody);
     };
 }
 
