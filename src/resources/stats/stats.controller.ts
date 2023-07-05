@@ -33,9 +33,14 @@ class StatsController implements IController {
         }
     };
     public getReportsDistribution = async(req: Request, res: Response,):Promise<Response | void> =>{
-        const result = await this.statsService.reportsAndNotesDistribution();
-        const resBody: IHttpResponse<DistributionOfReports[]> = {success:true,message:'Graph data',data:result}
-        res.status(200).json(resBody);
+      try {
+          const result = await this.statsService.reportsAndNotesDistribution();
+          const resBody: IHttpResponse<DistributionOfReports[]> = {success:true,message:'Graph data',data:result}
+          res.status(200).json(resBody);
+      } catch (error:any) {
+        const resBody: IHttpResponse<void> = {success:false,message:'Failed to Get Pie data',error:error.message};
+        return res.status(500).json(resBody);
+    }
     };
 }
 
