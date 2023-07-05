@@ -22,6 +22,7 @@ class NoteService {
 
     public formatDate = (): string => {
         const date = new Date();
+        date.setHours(date.getHours() + 3); // Add 3 hours to the current time
         const formattedTime = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
         const formattedDate = date.toLocaleDateString([], { day: '2-digit', month: '2-digit', year: 'numeric' });
         return `${formattedTime} ${formattedDate}`;
