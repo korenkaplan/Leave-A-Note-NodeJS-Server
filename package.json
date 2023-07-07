@@ -42,7 +42,8 @@
         "jsonwebtoken": "^9.0.0",
         "module-alias": "^2.2.3",
         "mongoose": "^7.3.0",
-        "morgan": "^1.10.0"
+        "morgan": "^1.10.0",
+        "node-fetch": "^3.3.1"
     },
     "_moduleAliases": {
         "@/resources": "build/resources",

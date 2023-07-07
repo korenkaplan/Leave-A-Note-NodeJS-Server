@@ -38,6 +38,8 @@ class UserChangeStream {
         const modifiedUser: IUser | null = await this.userService.GetUserQuery({ '_id': uid });
         if (!modifiedUser) return;
         
+        console.log(modifiedUser.accidents[modifiedUser.accidents.length - 1]);
+        
         })
   }
   private isNewMessage(fieldKeys: string[]): boolean{

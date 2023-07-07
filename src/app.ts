@@ -36,6 +36,7 @@ class App{
     private initializeControllers(controller: Controller[]): void {
         controller.forEach((controller) =>{
             this.express.use('/api',controller.router)
+            this.express.use('/api/notifications',require('./notification/notifications.js'))
         });
     };
 

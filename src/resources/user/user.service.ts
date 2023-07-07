@@ -48,8 +48,6 @@ class UserService {
     public async addMessageToUser(accident: IAccident, damagedUser: IUser): Promise<void> {
             accident._id = new Types.ObjectId();
             //add to user messages
-            console.log(accident.date);
-            
             damagedUser.accidents.push(accident);
             damagedUser.unreadMessages.push(accident);
             await damagedUser.save();
@@ -60,7 +58,6 @@ class UserService {
     public async GetUserQuery(query: FilterQuery<IUser> = {}, projection: ProjectionFields<IUser> = {}): Promise<IUser | null> {
         try {
             const user: IUser | null = await this.user.findOne(query, projection);
-            console.log(user);
             
             if(user?.accidents)
             user.accidents = user?.accidents.filter(accident => !accident.isDeleted)

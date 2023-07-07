@@ -1,6 +1,5 @@
 import { Schema, model, Document } from 'mongoose';
 import {IAccident} from '@/resources/accident/accident.interface';
-
  export const AccidentSchema = new Schema<IAccident>(
   {
     hittingDriver: {
