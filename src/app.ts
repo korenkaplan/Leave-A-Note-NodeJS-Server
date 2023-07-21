@@ -6,7 +6,6 @@ import morgan from 'morgan';
 import Controller from '@/utils/interfaces/controller.interface';
 import helmet from 'helmet';
 import errorMiddleware from '@/middleware/error.middleware';
-import UserChangeStream from './resources/user/user.changeStream';
 class App{
     public express : Application;
     public port: number;
@@ -19,11 +18,8 @@ class App{
         this.initializeMiddleware();
         this.initializeControllers(controllers);
         this.initializeErrorHandling();
-        this.initializeChangeStream();
     };
-    private initializeChangeStream(): void {
-        new UserChangeStream(); // Instantiate the UserChangeStream class
-      }
+
     private initializeMiddleware(): void {
         this.express.use(helmet());
         this.express.use(cors());
