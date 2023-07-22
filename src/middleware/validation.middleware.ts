@@ -1,7 +1,6 @@
-import { error } from 'console';
 import {Request, Response, NextFunction, RequestHandler} from 'express';
 import IHttpResponse from '@/utils/interfaces/httpResponse.interface';
-import Joi,{ValidationError } from 'joi';
+import Joi from 'joi';
 
 function validationMiddleware(schema: Joi.Schema): RequestHandler {
     return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
