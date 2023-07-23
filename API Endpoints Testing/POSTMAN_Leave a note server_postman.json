@@ -1,0 +1,505 @@
+{
+    "info": {
+        "_postman_id": "ee03c5de-985b-4a9e-9191-644bbbcdcfdd",
+        "name": "Leave a note server",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "users",
+            "item": [
+                {
+                    "name": "register",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://leave-a-note-nodejs-server.onrender.com/api/users/register",
+                            "path": [
+                                "api",
+                                "users",
+                                "register"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "leave-a-note-nodejs-server",
+                                "onrender",
+                                "com"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"Test@gmail.com\",\n  \"password\": \"123456\",\n  \"carNumber\": \"12345678\",\n  \"phoneNumber\": \"0533401234\"\n}\n"
+                        }
+                    }
+                },
+                {
+                    "name": "login",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://leave-a-note-nodejs-server.onrender.com/api/users/login",
+                            "path": [
+                                "api",
+                                "users",
+                                "login"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "leave-a-note-nodejs-server",
+                                "onrender",
+                                "com"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"email\": \"k@gmail.com\",\n  \"password\":\"123456\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get User Query",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://leave-a-note-nodejs-server.onrender.com/api/users/getUser",
+                            "path": [
+                                "api",
+                                "users",
+                                "getUser"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "leave-a-note-nodejs-server",
+                                "onrender",
+                                "com"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n     \"query\": {\n         \"name\": \"Koren Kaplan\"\n      },\n      \"projection\": {\n       \"name\": 1\n      }\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDExODY0NiwiZXhwIjoxNzIxMjIyNjQ2fQ.9xQT8B4dx7c9zgLdhdGjxMBmOXOlCBR07DDsbV0oDC4",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "deleteMessage",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://leave-a-note-nodejs-server.onrender.com/api/users/deleteMessage/",
+                            "path": [
+                                "api",
+                                "users",
+                                "deleteMessage"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "leave-a-note-nodejs-server",
+                                "onrender",
+                                "com"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"userId\":\"64a7df7f9029ad35ac3ed966\",\n  \"messageId\":\"64a7e42c9029ad35ac3ed984\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDExODY0NiwiZXhwIjoxNzIxMjIyNjQ2fQ.9xQT8B4dx7c9zgLdhdGjxMBmOXOlCBR07DDsbV0oDC4",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "update p'assword",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://leave-a-note-nodejs-server.onrender.com/api/users/passwordUpdate",
+                            "path": [
+                                "api",
+                                "users",
+                                "passwordUpdate"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "leave-a-note-nodejs-server",
+                                "onrender",
+                                "com"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n\"userId\":\"648f447388cf8e6657912c2d\",\n\"oldPassword\":\"123456\",\n\"newPassword\":\"123456\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGY0NDczODhjZjhlNjY1NzkxMmMyZCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjg3OTM1MjE5LCJleHAiOjE2OTA1MjcyMTl9.ryqQvqfBl3jvc4KJa-wFZHqCrZ-vjAvvoF8lTxLX70w",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "update user information",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://leave-a-note-nodejs-server.onrender.com/api/users/informationUpdate",
+                            "path": [
+                                "api",
+                                "users",
+                                "informationUpdate"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "leave-a-note-nodejs-server",
+                                "onrender",
+                                "com"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n\"userId\":\"64a7df7f9029ad35ac3ed966\",\n\"update\":{\n    \"email\": \"k@gmail.com\",\n  \"phoneNumber\":\"0533406789\",\n  \"carNumber\": \"8333368\"\n}\n \n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDExOTk4OCwiZXhwIjoxNzIxMjIzOTg4fQ.VSpBgAoVXDYzwEQdrkGuAaT7hl-PSdWAfWVSnkrmBQs",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete message inbox",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://leave-a-note-nodejs-server.onrender.com/api/users/deleteMessageInbox/",
+                            "path": [
+                                "api",
+                                "users",
+                                "deleteMessageInbox"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "leave-a-note-nodejs-server",
+                                "onrender",
+                                "com"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"userId\":\"648f447388cf8e6657912c2d\",\n  \"messageId\":\"64bbd0cd11266c1c3e6d1da0\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDExOTMzNSwiZXhwIjoxNzIxMjIzMzM1fQ.BFtf-kojEN5U924VM5wuLBMH1sJDw8T3oCZNY42lJkI",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "login Copy",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "localhost:3000/api/users/login",
+                            "path": [
+                                "api",
+                                "users",
+                                "login"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"email\": \"k@gmail.com\",\n  \"password\":\"123456\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "note",
+            "item": [
+                {
+                    "name": "create note",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://leave-a-note-nodejs-server.onrender.com/api/notes/createNote",
+                            "path": [
+                                "api",
+                                "notes",
+                                "createNote"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "leave-a-note-nodejs-server",
+                                "onrender",
+                                "com"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n \"damaged_user_car_num\":\"8333111\", \n \"hitting_user_car\":\"69354401\",\n \"hitting_user_phone\":\"0528942612\",\n \"hitting_user_name\":\"test\",\n \"imageSource\":\"https://res.cloudinary.com/dz3brwyob/image/upload/v1686467045/cld-sample-3.jpg\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4ODcyNDE1NSwiZXhwIjoxNjkxMzE2MTU1fQ.S5_TONPD8zYFKgapoFZNJkZJesSBBaB7Asu6_HBiRNU",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "report",
+            "item": [
+                {
+                    "name": "create matched report",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://leave-a-note-nodejs-server.onrender.com/api/reports/createReport",
+                            "path": [
+                                "api",
+                                "reports",
+                                "createReport"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "leave-a-note-nodejs-server",
+                                "onrender",
+                                "com"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"imageUrl\":\"https://res.cloudinary.com/dz3brwyob/image/upload/v1686467046/cld-sample-4.jpg\",\n  \"damagedCarNumber\":\"8333368\",\n  \"hittingCarNumber\":\"8111169\",\n  \"isAnonymous\":false,\n  \"reporter\":{\n    \"name\":\"Ofri Malka\",\n    \"phoneNumber\":\"0528942612\"\n  }\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDEyMDMyMywiZXhwIjoxNzIxMjI0MzIzfQ.ppkUD1lmVBt-jcwvevszYymgf17VLZXWqCQ9BmxOZ2Y",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "create unmatched report",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://leave-a-note-nodejs-server.onrender.com/api/reports/createReport",
+                            "path": [
+                                "api",
+                                "reports",
+                                "createReport"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "leave-a-note-nodejs-server",
+                                "onrender",
+                                "com"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"imageUrl\":\"https://res.cloudinary.com/dz3brwyob/image/upload/v1686467046/cld-sample-4.jpg\",\n  \"damagedCarNumber\":\"8331111\",\n  \"hittingCarNumber\":\"8111161\",\n  \"isAnonymous\":false,\n  \"reporter\":{\n    \"name\":\"Ofri Malka\",\n    \"phoneNumber\":\"0528942612\"\n  }\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDEyMDMyMywiZXhwIjoxNzIxMjI0MzIzfQ.ppkUD1lmVBt-jcwvevszYymgf17VLZXWqCQ9BmxOZ2Y",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Stats",
+            "item": [
+                {
+                    "name": "getRegisteredUsersData",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://leave-a-note-nodejs-server.onrender.com/api/stats/registeredUsersData",
+                            "path": [
+                                "api",
+                                "stats",
+                                "registeredUsersData"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "leave-a-note-nodejs-server",
+                                "onrender",
+                                "com"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"year\":\"2023\",\n  \"role\":\"admin\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDEyMDMyMywiZXhwIjoxNzIxMjI0MzIzfQ.ppkUD1lmVBt-jcwvevszYymgf17VLZXWqCQ9BmxOZ2Y",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "getReportsDistribution",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://leave-a-note-nodejs-server.onrender.com/api/stats/reportsDistribution",
+                            "path": [
+                                "api",
+                                "stats",
+                                "reportsDistribution"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "leave-a-note-nodejs-server",
+                                "onrender",
+                                "com"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"role\":\"admin\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4ODcyMzgzNiwiZXhwIjoxNjkxMzE1ODM2fQ.4CZrA7XDtQ9KV-O6h-FURLtc18IHSGKbR8ewkgP89yIeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4ODcyMzgzNiwiZXhwIjoxNjkxMzE1ODM2fQ.4CZrA7XDtQ9KV-O6h-FURLtc18IHSGKbR8ewkgP89yI",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

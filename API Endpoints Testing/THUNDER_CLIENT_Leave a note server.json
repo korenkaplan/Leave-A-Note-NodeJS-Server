@@ -1,0 +1,325 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Leave a note server",
+    "dateExported": "2023-07-23T14:02:59.783Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "c08f0c03-e5f6-4921-8b8e-35167d812238",
+            "name": "users",
+            "containerId": "",
+            "created": "2023-06-18T12:23:28.864Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "660a417d-53f3-4ec3-9408-3fba0cfa3896",
+            "name": "note",
+            "containerId": "",
+            "created": "2023-06-18T17:49:41.861Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "eb853a29-2cd6-47fe-8920-43b1bdeb12d6",
+            "name": "report",
+            "containerId": "",
+            "created": "2023-06-18T20:26:19.839Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "70e203c0-fc32-47b0-8abb-b26561391d11",
+            "name": "Stats",
+            "containerId": "",
+            "created": "2023-07-04T10:23:12.203Z",
+            "sortNum": 50000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "bb17242f-e572-47ef-aedb-0dd9dafb2ccf",
+            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
+            "containerId": "c08f0c03-e5f6-4921-8b8e-35167d812238",
+            "name": "register",
+            "url": "https://leave-a-note-nodejs-server.onrender.com/api/users/register",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-06-18T12:23:37.402Z",
+            "modified": "2023-07-23T13:27:04.938Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"Test@gmail.com\",\n  \"password\": \"123456\",\n  \"carNumber\": \"12345678\",\n  \"phoneNumber\": \"0533401234\"\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ed106aaa-468d-486d-b0d1-0c4d926ac697",
+            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
+            "containerId": "c08f0c03-e5f6-4921-8b8e-35167d812238",
+            "name": "login",
+            "url": "https://leave-a-note-nodejs-server.onrender.com/api/users/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-06-18T12:43:24.490Z",
+            "modified": "2023-07-23T13:24:05.860Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"k@gmail.com\",\n  \"password\":\"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "57636973-643f-4861-8b98-8981a0423433",
+            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
+            "containerId": "c08f0c03-e5f6-4921-8b8e-35167d812238",
+            "name": "login Copy",
+            "url": "localhost:3000/api/users/login",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-07-23T13:35:30.053Z",
+            "modified": "2023-07-23T13:35:35.079Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"k@gmail.com\",\n  \"password\":\"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "89b4be60-d032-4501-be54-7a2dfe1218c6",
+            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
+            "containerId": "660a417d-53f3-4ec3-9408-3fba0cfa3896",
+            "name": "create note",
+            "url": "https://leave-a-note-nodejs-server.onrender.com/api/notes/createNote",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-06-18T17:49:53.959Z",
+            "modified": "2023-07-23T13:50:48.771Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"damaged_user_car_num\":\"8333111\", \n \"hitting_user_car\":\"69354401\",\n \"hitting_user_phone\":\"0528942612\",\n \"hitting_user_name\":\"test\",\n \"imageSource\":\"https://res.cloudinary.com/dz3brwyob/image/upload/v1686467045/cld-sample-3.jpg\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4ODcyNDE1NSwiZXhwIjoxNjkxMzE2MTU1fQ.S5_TONPD8zYFKgapoFZNJkZJesSBBaB7Asu6_HBiRNU"
+            },
+            "tests": []
+        },
+        {
+            "_id": "b09abe89-9f4c-4440-b3c3-3c9097195585",
+            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
+            "containerId": "c08f0c03-e5f6-4921-8b8e-35167d812238",
+            "name": "Get User Query",
+            "url": "https://leave-a-note-nodejs-server.onrender.com/api/users/getUser",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-06-19T05:14:39.934Z",
+            "modified": "2023-07-23T13:28:38.362Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n     \"query\": {\n         \"name\": \"Koren Kaplan\"\n      },\n      \"projection\": {\n       \"name\": 1\n      }\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDExODY0NiwiZXhwIjoxNzIxMjIyNjQ2fQ.9xQT8B4dx7c9zgLdhdGjxMBmOXOlCBR07DDsbV0oDC4"
+            },
+            "tests": []
+        },
+        {
+            "_id": "443c5f94-b942-4806-9086-4f3f55530f9c",
+            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
+            "containerId": "eb853a29-2cd6-47fe-8920-43b1bdeb12d6",
+            "name": "create matched report",
+            "url": "https://leave-a-note-nodejs-server.onrender.com/api/reports/createReport",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-06-18T20:26:26.701Z",
+            "modified": "2023-07-23T13:54:02.835Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"imageUrl\":\"https://res.cloudinary.com/dz3brwyob/image/upload/v1686467046/cld-sample-4.jpg\",\n  \"damagedCarNumber\":\"8333368\",\n  \"hittingCarNumber\":\"8111169\",\n  \"isAnonymous\":false,\n  \"reporter\":{\n    \"name\":\"Ofri Malka\",\n    \"phoneNumber\":\"0528942612\"\n  }\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDEyMDMyMywiZXhwIjoxNzIxMjI0MzIzfQ.ppkUD1lmVBt-jcwvevszYymgf17VLZXWqCQ9BmxOZ2Y"
+            },
+            "tests": []
+        },
+        {
+            "_id": "6aac8301-1d10-4185-8682-e7e567fc134d",
+            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
+            "containerId": "eb853a29-2cd6-47fe-8920-43b1bdeb12d6",
+            "name": "create unmatched report",
+            "url": "https://leave-a-note-nodejs-server.onrender.com/api/reports/createReport",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2023-06-18T20:30:52.819Z",
+            "modified": "2023-07-23T13:52:25.550Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"imageUrl\":\"https://res.cloudinary.com/dz3brwyob/image/upload/v1686467046/cld-sample-4.jpg\",\n  \"damagedCarNumber\":\"8331111\",\n  \"hittingCarNumber\":\"8111161\",\n  \"isAnonymous\":false,\n  \"reporter\":{\n    \"name\":\"Ofri Malka\",\n    \"phoneNumber\":\"0528942612\"\n  }\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDEyMDMyMywiZXhwIjoxNzIxMjI0MzIzfQ.ppkUD1lmVBt-jcwvevszYymgf17VLZXWqCQ9BmxOZ2Y"
+            },
+            "tests": []
+        },
+        {
+            "_id": "979e566e-b762-4ab8-8e83-70799cae5a5d",
+            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
+            "containerId": "c08f0c03-e5f6-4921-8b8e-35167d812238",
+            "name": "deleteMessage",
+            "url": "https://leave-a-note-nodejs-server.onrender.com/api/users/deleteMessage/",
+            "method": "POST",
+            "sortNum": 105000,
+            "created": "2023-06-19T14:10:31.678Z",
+            "modified": "2023-07-23T13:33:03.328Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userId\":\"64a7df7f9029ad35ac3ed966\",\n  \"messageId\":\"64a7e42c9029ad35ac3ed984\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDExODY0NiwiZXhwIjoxNzIxMjIyNjQ2fQ.9xQT8B4dx7c9zgLdhdGjxMBmOXOlCBR07DDsbV0oDC4"
+            },
+            "tests": []
+        },
+        {
+            "_id": "251451ba-a6fe-489f-9290-a63f3a92e0d6",
+            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
+            "containerId": "c08f0c03-e5f6-4921-8b8e-35167d812238",
+            "name": "delete message inbox",
+            "url": "https://leave-a-note-nodejs-server.onrender.com/api/users/deleteMessageInbox/",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2023-06-28T12:17:00.360Z",
+            "modified": "2023-07-23T13:43:33.759Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userId\":\"648f447388cf8e6657912c2d\",\n  \"messageId\":\"64bbd0cd11266c1c3e6d1da0\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDExOTMzNSwiZXhwIjoxNzIxMjIzMzM1fQ.BFtf-kojEN5U924VM5wuLBMH1sJDw8T3oCZNY42lJkI"
+            },
+            "tests": []
+        },
+        {
+            "_id": "5fcd56d2-f022-46bd-9a24-7f234b485a07",
+            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
+            "containerId": "c08f0c03-e5f6-4921-8b8e-35167d812238",
+            "name": "update p'assword",
+            "url": "https://leave-a-note-nodejs-server.onrender.com/api/users/passwordUpdate",
+            "method": "POST",
+            "sortNum": 115000,
+            "created": "2023-06-26T07:25:06.957Z",
+            "modified": "2023-06-28T11:49:35.229Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"userId\":\"648f447388cf8e6657912c2d\",\n\"oldPassword\":\"123456\",\n\"newPassword\":\"123456\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGY0NDczODhjZjhlNjY1NzkxMmMyZCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjg3OTM1MjE5LCJleHAiOjE2OTA1MjcyMTl9.ryqQvqfBl3jvc4KJa-wFZHqCrZ-vjAvvoF8lTxLX70w"
+            },
+            "tests": []
+        },
+        {
+            "_id": "f6943b88-1ff4-47df-bb0b-a140c28d8235",
+            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
+            "containerId": "c08f0c03-e5f6-4921-8b8e-35167d812238",
+            "name": "update user information",
+            "url": "https://leave-a-note-nodejs-server.onrender.com/api/users/informationUpdate",
+            "method": "POST",
+            "sortNum": 125000,
+            "created": "2023-06-26T08:23:24.913Z",
+            "modified": "2023-07-23T13:47:23.681Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"userId\":\"64a7df7f9029ad35ac3ed966\",\n\"update\":{\n    \"email\": \"k@gmail.com\",\n  \"phoneNumber\":\"0533406789\",\n  \"carNumber\": \"8333368\"\n}\n \n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDExOTk4OCwiZXhwIjoxNzIxMjIzOTg4fQ.VSpBgAoVXDYzwEQdrkGuAaT7hl-PSdWAfWVSnkrmBQs"
+            },
+            "tests": []
+        },
+        {
+            "_id": "2f2cc813-e881-4fc3-90df-a8ee0d66dbd9",
+            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
+            "containerId": "70e203c0-fc32-47b0-8abb-b26561391d11",
+            "name": "getRegisteredUsersData",
+            "url": "https://leave-a-note-nodejs-server.onrender.com/api/stats/registeredUsersData",
+            "method": "POST",
+            "sortNum": 145000,
+            "created": "2023-07-04T10:23:22.563Z",
+            "modified": "2023-07-23T13:54:44.739Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"year\":\"2023\",\n  \"role\":\"admin\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MDEyMDMyMywiZXhwIjoxNzIxMjI0MzIzfQ.ppkUD1lmVBt-jcwvevszYymgf17VLZXWqCQ9BmxOZ2Y"
+            },
+            "tests": []
+        },
+        {
+            "_id": "6b462c3c-4d44-4aa6-a269-9a08be4fd813",
+            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
+            "containerId": "70e203c0-fc32-47b0-8abb-b26561391d11",
+            "name": "getReportsDistribution",
+            "url": "https://leave-a-note-nodejs-server.onrender.com/api/stats/reportsDistribution",
+            "method": "POST",
+            "sortNum": 155000,
+            "created": "2023-07-04T15:02:49.094Z",
+            "modified": "2023-07-23T13:55:44.398Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"role\":\"admin\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4ODcyMzgzNiwiZXhwIjoxNjkxMzE1ODM2fQ.4CZrA7XDtQ9KV-O6h-FURLtc18IHSGKbR8ewkgP89yIeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTdkZjdmOTAyOWFkMzVhYzNlZDk2NiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4ODcyMzgzNiwiZXhwIjoxNjkxMzE1ODM2fQ.4CZrA7XDtQ9KV-O6h-FURLtc18IHSGKbR8ewkgP89yI"
+            },
+            "tests": []
+        }
+    ]
+}

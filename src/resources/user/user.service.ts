@@ -110,14 +110,16 @@ class UserService {
                 return [false, 'User not found'];
 
             const index = user.accidents.findIndex(accident => accident._id?.equals(new Types.ObjectId(messageId)));
-
+            console.log(index);
+            
             if (index < 0)
                 return [false,'Accident not found'];
 
-
+            if(user.accidents[index].isDeleted === true)
+            return [true, 'Accident is already deleted']
             user.accidents[index].isDeleted = true;
             await user.save();
-
+            
             return [true, 'Accident deleted successfully'];
     }
     /**

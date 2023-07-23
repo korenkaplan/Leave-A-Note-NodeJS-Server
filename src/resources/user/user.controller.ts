@@ -68,6 +68,8 @@ class UserController implements IController {
     private deleteMessageById = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
         try {
             const { userId, messageId } = req.body;
+            console.log(userId, messageId);
+            
             const [isSuccessful, resultMessage] = await this.UserService.deleteMessage(userId, messageId);
             const [message, status, error] = isSuccessful ? [resultMessage, 200] : ['Failed to delete message', 404, resultMessage];
             const resBody: IHttpResponse<void> = { success: isSuccessful, message, error }
