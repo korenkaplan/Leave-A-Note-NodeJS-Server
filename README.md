@@ -7,9 +7,9 @@ Leave A Note is a revolutionary platform designed to address the challenges driv
 1. [Source and Demo, Future Features for Upcoming Versions](#source-and-demo-future-features-for-upcoming-versions)
 2. [Introduction](#introduction)
 3. [Setup and Installation, Middleware Files, Entity Description](#setup-and-installation-middleware-files-entity-description)
-4. [Folder Structure](#folder-structure)
-5. [Database Schema](#database-schema)
-6. 6.[Endpoints Testing Files](#Endpoints Testing Files)
+4. [Endpoints Testing Files](#endpoints-testing-files)
+6. [Database Schema](#database-schema)
+
 
 ## Source And Demo, Future Features for Upcoming Versions
 
@@ -80,7 +80,7 @@ The server manages the following entities:
 3.	Choose the testing platform that you prefer and import the corresponding file for your testing needs.
 4.	By following these steps, you can easily access and utilize the provided testing files for the API endpoints testing.
 
-## Database Schemas
+## Database Schema
 
 **Accident Schema (SubDocument):** [? = Optional]
 
