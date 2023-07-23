@@ -95,7 +95,7 @@ The server manages the following entities:
 | date                                            | string  |
 | isDeleted                                       | boolean |
 | createdAt                                       | ISO Date|
-| reporter                                        | { name: str, phoneNumber: str }? |
+| reporter                                        | { name: str, phoneNumber: str } |
 
 **User Document Schema**
 
