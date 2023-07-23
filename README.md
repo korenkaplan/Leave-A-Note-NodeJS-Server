@@ -7,8 +7,9 @@ Leave A Note is a revolutionary platform designed to address the challenges driv
 1. [Source and Demo, Future Features for Upcoming Versions](#source-and-demo-future-features-for-upcoming-versions)
 2. [Introduction](#introduction)
 3. [Setup and Installation, Middleware Files, Entity Description](#setup-and-installation-middleware-files-entity-description)
-4. [Folder Structure](#folder-structure)
-5. [Database Schema](#database-schema)
+4. [Endpoints Testing Files](#endpoints-testing-files)
+6. [Database Schema](#database-schema)
+
 
 ## Source And Demo, Future Features for Upcoming Versions
 
@@ -73,9 +74,13 @@ The server manages the following entities:
 - Accident: A model representing both notes and reports, stored as a sub-document in the user's profile.
 
 ---
+## Endpoints Testing Files
+1.	Navigate to the folder named "./API Endpoints Testing."
+2.	In this folder, you will find two files: one is for Postman and the other one for Thunder Client.
+3.	Choose the testing platform that you prefer and import the corresponding file for your testing needs.
+4.	By following these steps, you can easily access and utilize the provided testing files for the API endpoints testing.
 
-
-## Database Schemas
+## Database Schema
 
 **Accident Schema (SubDocument):** [? = Optional]
 
@@ -90,7 +95,7 @@ The server manages the following entities:
 | date                                            | string  |
 | isDeleted                                       | boolean |
 | createdAt                                       | ISO Date|
-| reporter                                        | { name: str, phoneNumber: str }? |
+| reporter                                        | { name: str, phoneNumber: str } |
 
 **User Document Schema**
 
