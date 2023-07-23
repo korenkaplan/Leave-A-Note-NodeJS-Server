@@ -18,6 +18,7 @@ class App {
         this.initializeMiddleware();
         this.initializeControllers(controllers);
         this.initializeErrorHandling();
+        
     };
 
 
