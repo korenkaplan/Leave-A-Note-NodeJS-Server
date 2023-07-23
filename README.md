@@ -9,6 +9,7 @@ Leave A Note is a revolutionary platform designed to address the challenges driv
 3. [Setup and Installation, Middleware Files, Entity Description](#setup-and-installation-middleware-files-entity-description)
 4. [Folder Structure](#folder-structure)
 5. [Database Schema](#database-schema)
+6. 6.[Endpoints Testing Files](#Endpoints Testing Files)
 
 ## Source And Demo, Future Features for Upcoming Versions
 
@@ -73,7 +74,11 @@ The server manages the following entities:
 - Accident: A model representing both notes and reports, stored as a sub-document in the user's profile.
 
 ---
-
+## Endpoints Testing Files
+1.	Navigate to the folder named "./API Endpoints Testing."
+2.	In this folder, you will find two files: one is for Postman and the other one for Thunder Client.
+3.	Choose the testing platform that you prefer and import the corresponding file for your testing needs.
+4.	By following these steps, you can easily access and utilize the provided testing files for the API endpoints testing.
 
 ## Database Schemas
 
