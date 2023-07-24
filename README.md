@@ -17,7 +17,7 @@ Leave A Note is a revolutionary platform designed to address the challenges driv
 - [Client side React Native Repository](https://github.com/korenkaplan/Leave-A-Note)
   
 **App Video Demo:**
-- [Walkthrough demo video](https://www.youtube.com/watch?v=cT3-7UXTNKc&t=451s)
+- [Walkthrough demo video](https://www.youtube.com/watch?v=FAv9v3SBU9I)
 
 **Future Features for Upcoming Versions (Current Version 1.0):**
 1. **Multi-Language Support:** Recognizing our diverse user base, we plan to introduce multi-language support. Users will be able to interact with the platform in their preferred language, promoting inclusivity and ease of use for everyone.
