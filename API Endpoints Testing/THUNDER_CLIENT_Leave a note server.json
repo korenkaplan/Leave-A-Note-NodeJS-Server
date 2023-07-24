@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Leave a note server",
-    "dateExported": "2023-07-23T14:02:59.783Z",
+    "dateExported": "2023-07-24T08:24:39.090Z",
     "version": "1.1",
     "folders": [
         {
@@ -63,25 +63,6 @@
             "sortNum": 30000,
             "created": "2023-06-18T12:43:24.490Z",
             "modified": "2023-07-23T13:24:05.860Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"email\": \"k@gmail.com\",\n  \"password\":\"123456\"\n}",
-                "form": []
-            },
-            "tests": []
-        },
-        {
-            "_id": "57636973-643f-4861-8b98-8981a0423433",
-            "colId": "6b3b83fe-72b8-464b-8f43-66bb627a21b0",
-            "containerId": "c08f0c03-e5f6-4921-8b8e-35167d812238",
-            "name": "login Copy",
-            "url": "localhost:3000/api/users/login",
-            "method": "POST",
-            "sortNum": 40000,
-            "created": "2023-07-23T13:35:30.053Z",
-            "modified": "2023-07-23T13:35:35.079Z",
             "headers": [],
             "params": [],
             "body": {

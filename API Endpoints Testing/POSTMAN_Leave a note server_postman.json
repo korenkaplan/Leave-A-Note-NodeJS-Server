@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "ee03c5de-985b-4a9e-9191-644bbbcdcfdd",
+        "_postman_id": "3214fde2-5da6-4fb7-83ae-603f18e7a82b",
         "name": "Leave a note server",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -259,33 +259,6 @@
                                     "type": "string"
                                 }
                             ]
-                        }
-                    }
-                },
-                {
-                    "name": "login Copy",
-                    "request": {
-                        "method": "POST",
-                        "url": {
-                            "raw": "localhost:3000/api/users/login",
-                            "path": [
-                                "api",
-                                "users",
-                                "login"
-                            ],
-                            "host": [
-                                "localhost"
-                            ],
-                            "port": "3000"
-                        },
-                        "body": {
-                            "mode": "raw",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            },
-                            "raw": "{\n  \"email\": \"k@gmail.com\",\n  \"password\":\"123456\"\n}"
                         }
                     }
                 }
