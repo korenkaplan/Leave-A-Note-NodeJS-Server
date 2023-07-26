@@ -48,15 +48,7 @@ Our platform caters to all drivers, whether they have experienced a parking inci
 - Asymmetric Information Sharing: To further protect your privacy, "Leave A Note" operates on asymmetric information sharing. Only the damaged user will have access to the details of the hitting driver, while the reverse is not permitted. This ensures that the user who experienced the incident retains full control over the exchange of information, maintaining their privacy and personal safety.
 ---
 
-## Setup and Installation, Middleware Files, Entity Description
-
-**Setup and Installation:**
-To run the server project locally, follow these steps:
-1. Clone the repository from GitHub.
-2. Navigate to the project's root directory.
-3. Run `npm install` to install all the required dependencies.
-4. Create a .env file with the necessary environment variables (refer to .env.example for the structure).
-5. Start the server using `npm run dev`.
+## Middleware Files, Entity Description
 
 **Middleware Files:**
 Middleware components in the Middleware/ folder handle various aspects of request processing:
