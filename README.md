@@ -6,7 +6,7 @@ Leave A Note is a revolutionary platform designed to address the challenges driv
 ## Table Of Content
 1. [Source and Demo, Future Features for Upcoming Versions](#source-and-demo-future-features-for-upcoming-versions)
 2. [Introduction](#introduction)
-3. [Setup and Installation, Middleware Files, Entity Description](#setup-and-installation-middleware-files-entity-description)
+3. [Middleware Files, Entity Description](#setup-and-installation-middleware-files-entity-description)
 4. [Endpoints Testing Files](#endpoints-testing-files)
 6. [Database Schema](#database-schema)
 
