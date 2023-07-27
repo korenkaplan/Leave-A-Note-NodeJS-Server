@@ -32,6 +32,10 @@ const UserSchema = new Schema<User>(
       required: true,
       unique: true,
     },
+    deviceToken:{
+      type: String,
+      required: true,
+    },
     accidents: [AccidentSchema], // Array of embedded Accident objects
     unreadMessages: [AccidentSchema], // Array of embedded Accident objects in inbox
   },

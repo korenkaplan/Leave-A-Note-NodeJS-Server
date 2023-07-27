@@ -18,6 +18,7 @@ class UserController implements IController {
     private initializeRoutes(): void {
         this.router.post(`${this.path}/register`, validationMiddleware(validate.register), this.register);
         this.router.post(`${this.path}/login`, validationMiddleware(validate.login), this.login);
+        this.router.post(`${this.path}/updateDeviceToken`, validationMiddleware(validate.updateDeviceToken), this.updateDeviceToken);
         this.router.post(`${this.path}/passwordUpdate`, authenticated, validationMiddleware(validate.passwordUpdate), this.updateUserPassword);
         this.router.post(`${this.path}/informationUpdate`, authenticated, validationMiddleware(validate.infoUpdate), this.updateUserInformation);
         this.router.post(`${this.path}/deleteMessage`, authenticated, validationMiddleware(validate.deleteMessage), this.deleteMessageById);
@@ -27,15 +28,15 @@ class UserController implements IController {
     // ** Checked
     private register = async (req: Request, res: Response): Promise<Response | void> => {
         try {
-            const { name, email, password, carNumber, phoneNumber } = req.body;
-            const token = await this.UserService.register(name, email, carNumber, phoneNumber, password, 'user');
+            const { name, email, password, carNumber, phoneNumber, deviceToken } = req.body;
+            const token = await this.UserService.register(name, email, carNumber, phoneNumber, password, 'user', deviceToken);
             const [message, success, status, data] = ['Register Successfully', true, 201, token]
             const resBody: IHttpResponse<string> = { message, success, data }
             res.status(status).json(resBody)
 
         } catch (error: any) {
             const fieldInUse = this.UserService.translateError(error.message)
-            const resBody: IHttpResponse<string> = { message: 'Registration Failed', success: false, error:`This ${fieldInUse} is already in use.` }
+            const resBody: IHttpResponse<string> = { message: 'Registration Failed', success: false, error: `This ${fieldInUse} is already in use.` }
             res.status(500).json(resBody)
         }
     };
@@ -110,8 +111,8 @@ class UserController implements IController {
     // ** Checked
     private updateUserInformation = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
         try {
-            const { userId, update } = req.body;
-            const [isSuccessful, resultMessage] = await this.UserService.updateUserInfo(userId, update);
+            const { userId, fieldsToUpdate } = req.body;
+            const [isSuccessful, resultMessage] = await this.UserService.updateUserInfo(userId, fieldsToUpdate);
             const [success, message, status, error] = isSuccessful ? [true, resultMessage, 200] : [false, 'Failed to update user\'s info', 400, resultMessage];
             const resBody: IHttpResponse<void> = { message, success, error }
             return res.status(status).json(resBody);
@@ -121,6 +122,18 @@ class UserController implements IController {
             res.status(500).json(resBody)
         }
     };
-
+    // ** Checked
+    private updateDeviceToken = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
+        try {
+            const { userId, deviceToken } = req.body;
+            const [isSuccessful, resultMessage] = await this.UserService.updateDeviceToken(userId, deviceToken);
+            const [success, message, status, error] = isSuccessful ? [true, resultMessage, 200] : [false, 'Failed to update user\'s device token', 400, resultMessage];
+            const resBody: IHttpResponse<void> = { message, success, error }
+            return res.status(status).json(resBody);
+        } catch (e: any) {
+            const resBody: IHttpResponse<void> = { success: false, message: 'Failed to update user device token', error: e.message }
+            res.status(500).json(resBody)
+        }
+    };
 };
 export default UserController;

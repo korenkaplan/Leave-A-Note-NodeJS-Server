@@ -15,9 +15,9 @@ class UserService {
     /**
      * Register a new user
      */
-    public async register(name: string, email: string, carNumber: string, phoneNumber: string, password: string, role: string): Promise<string> {
+    public async register(name: string, email: string, carNumber: string, phoneNumber: string, password: string, role: string, deviceToken: string): Promise<string> {
 
-            const user: IUser = await this.user.create({ name, email, password, phoneNumber, carNumber, role, accidents: [], unreadMessages: []});
+            const user: IUser = await this.user.create({ name, email, password, phoneNumber, carNumber, role,deviceToken, accidents: [], unreadMessages: []});
             const unMatchedReports = await this.SearchUnmatchedReports(carNumber);
             if (unMatchedReports) {
                 await this.AddUnmatchedReportsToUser(user, unMatchedReports)
@@ -178,6 +178,11 @@ class UserService {
         else if(error.includes('email')){fieldInUse = 'email'}
         return fieldInUse;
     }
+public async updateDeviceToken(userId:string, deviceToken:string): Promise<[boolean, string]>{
+    const updatedUser = await this.user.findOneAndUpdate<IUser | null>({ '_id': userId }, {deviceToken}, { new: true });
+    return updatedUser? [true, 'User device token updated successfully.']: [false, 'User with this id not found in the system.']
 
+
+}
 };
 export default UserService;
