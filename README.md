@@ -6,7 +6,7 @@ Leave A Note is a revolutionary platform designed to address the challenges driv
 ## Table Of Content
 1. [Source and Demo, Future Features for Upcoming Versions](#source-and-demo-future-features-for-upcoming-versions)
 2. [Introduction](#introduction)
-3. [Setup and Installation, Middleware Files, Entity Description](#setup-and-installation-middleware-files-entity-description)
+3. [Middleware Files, Entity Description](#setup-and-installation-middleware-files-entity-description)
 4. [Endpoints Testing Files](#endpoints-testing-files)
 6. [Database Schema](#database-schema)
 
@@ -17,7 +17,7 @@ Leave A Note is a revolutionary platform designed to address the challenges driv
 - [Client side React Native Repository](https://github.com/korenkaplan/Leave-A-Note)
   
 **App Video Demo:**
-- [Walkthrough demo video](https://www.youtube.com/watch?v=cT3-7UXTNKc&t=451s)
+- [Walkthrough demo video](https://www.youtube.com/watch?v=FAv9v3SBU9I)
 
 **Future Features for Upcoming Versions (Current Version 1.0):**
 1. **Multi-Language Support:** Recognizing our diverse user base, we plan to introduce multi-language support. Users will be able to interact with the platform in their preferred language, promoting inclusivity and ease of use for everyone.
@@ -48,15 +48,7 @@ Our platform caters to all drivers, whether they have experienced a parking inci
 - Asymmetric Information Sharing: To further protect your privacy, "Leave A Note" operates on asymmetric information sharing. Only the damaged user will have access to the details of the hitting driver, while the reverse is not permitted. This ensures that the user who experienced the incident retains full control over the exchange of information, maintaining their privacy and personal safety.
 ---
 
-## Setup and Installation, Middleware Files, Entity Description
-
-**Setup and Installation:**
-To run the server project locally, follow these steps:
-1. Clone the repository from GitHub.
-2. Navigate to the project's root directory.
-3. Run `npm install` to install all the required dependencies.
-4. Create a .env file with the necessary environment variables (refer to .env.example for the structure).
-5. Start the server using `npm run dev`.
+## Middleware Files, Entity Description
 
 **Middleware Files:**
 Middleware components in the Middleware/ folder handle various aspects of request processing:
