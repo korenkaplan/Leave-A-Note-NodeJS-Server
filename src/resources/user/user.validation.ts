@@ -5,7 +5,8 @@ const register = Joi.object({
     email: Joi.string().required().email(),
     password: Joi.string().min(6).max(12),
     carNumber:Joi.string().min(7).max(8),
-    phoneNumber:Joi.string().length(10)
+    phoneNumber:Joi.string().length(10),
+    deviceToken:Joi.string()
   });
   const carSearch = Joi.object({
     carNumber:Joi.string().min(7).max(8),
@@ -32,6 +33,9 @@ const infoUpdate = Joi.object({
     carNumber: Joi.string(),
   }).required(),
 });
+const updateDeviceToken = Joi.object({
+  userId: Joi.string().required(),
+  deviceToken: Joi.string().required(),
+});
 
-
-export default {login, register,carSearch,deleteMessage, passwordUpdate,infoUpdate};
+export default {login, register,carSearch,deleteMessage, passwordUpdate,infoUpdate,updateDeviceToken};
